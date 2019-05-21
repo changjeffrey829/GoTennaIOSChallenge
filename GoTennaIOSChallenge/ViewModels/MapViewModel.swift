@@ -13,11 +13,11 @@ import Mapbox
 class MapViewModel {
     private var positions = [Position]()
     private let networkService: NetworkServiceProtocol
-    private let storageService: StorageService
+    private let storageService: StorageServiceProtocol
     private (set) var annotations = [MGLPointAnnotation]()
     private let locationManager = CLLocationManager()
     
-    init(networkService: NetworkServiceProtocol = NetworkService(), storageService: StorageService = StorageService.share) {
+    init(networkService: NetworkServiceProtocol = NetworkService(), storageService: StorageServiceProtocol = StorageService()) {
         self.networkService = networkService
         self.storageService = storageService
     }

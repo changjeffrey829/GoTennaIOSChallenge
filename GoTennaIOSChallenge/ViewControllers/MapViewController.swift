@@ -125,8 +125,7 @@ extension MapViewController: MGLMapViewDelegate {
 }
 
 extension MapViewController: LocationDelegate {
-    func showLocation(latitude: Double, longitude: Double) {
-        let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    func showLocation(coordinate: CLLocationCoordinate2D) {
         mapView.setCenter(coordinate, zoomLevel: 15, animated: true)
     }
 }

@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import CoreLocation
 
 protocol LocationDelegate {
-    func showLocation(latitude: Double, longitude: Double)
+    func showLocation(coordinate: CLLocationCoordinate2D)
 }
 
 class LocationListViewController: UITableViewController {
@@ -26,7 +27,7 @@ class LocationListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.positions.count
+        return viewModel.positionCount()
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -36,8 +37,7 @@ class LocationListViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let position = viewModel.positions[indexPath.row]
-        delegate?.showLocation(latitude: position.latitude, longitude: position.longitude)
+        delegate?.showLocation(coordinate: viewModel.coordinates(index: indexPath.row))
         navigationController?.popViewController(animated: true)
     }
     

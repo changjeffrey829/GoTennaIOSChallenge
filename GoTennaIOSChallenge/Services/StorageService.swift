@@ -11,11 +11,11 @@ import CoreData
 
 protocol StorageServiceProtocol {
     func loadPositions(completion: @escaping (Result<[Position], Error>) -> ())
+    func savePositions(positionJSONs: [PositionJSON], completion: @escaping ()->())
+    func removeAllPositions()
 }
 
-class StorageService {
-    private init() {}
-    static let share = StorageService()
+class StorageService: StorageServiceProtocol {
     
     let persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "GoTennaIOSChallengeModels")
