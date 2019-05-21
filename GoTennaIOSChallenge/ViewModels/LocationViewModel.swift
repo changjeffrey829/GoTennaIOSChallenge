@@ -19,13 +19,13 @@ class LocationViewModel {
         return positions.count
     }
     
-    func coordinates(index: Int) -> CLLocationCoordinate2D {
+    func
+        coordinates(index: Int) -> CLLocationCoordinate2D {
         let coordinates = CLLocationCoordinate2D(latitude: positions[index].latitude, longitude: positions[index].longitude)
         return coordinates
     }
     
     func detailLocationViewModel(index: Int) -> DetailLocationViewModel {
-        print("positions in vm???? \(positionCount())")
         return DetailLocationViewModel(position: positions[index])
     }
 }
